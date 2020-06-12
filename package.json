@@ -1,16 +1,21 @@
 {
   "name": "pasteleiro-bot",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "src/app.js",
   "scripts": {
     "dev": "nodemon"
   },
   "author": "Lucas Stoller",
   "license": "MIT",
   "dependencies": {
+    "@slack/web-api": "^5.10.0",
     "body-parser": "^1.19.0",
     "dotenv": "^8.2.0",
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "lodash": "^4.17.15",
+    "pg": "^8.2.1",
+    "pg-hstore": "^2.3.3",
+    "sequelize": "^5.21.12"
   },
   "devDependencies": {
     "nodemon": "^2.0.4"
