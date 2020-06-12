@@ -1,3 +1,4 @@
+const applicationController = require('./controllers/applicationController');
 const pasteleiroController = require('./controllers/pasteleirosController');
 
 const {
@@ -8,5 +9,6 @@ const {
 module.exports = app => {
   app.use(getWebClientMiddleware);
 
+  app.get('/', applicationController.index);
   app.post('/pasteleiro-do-dia', getChannelMembersMiddleware, pasteleiroController.createPasteleiro);
 }
