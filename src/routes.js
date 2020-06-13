@@ -1,6 +1,8 @@
+const applicationController = require('./controllers/applicationController');
 const pasteleiroController = require('./controllers/pasteleirosController');
 
 const {
+  getTeamAccessToken,
   getWebClientMiddleware,
   getChannelMembersMiddleware
 } = require("./middlewares");
@@ -8,5 +10,7 @@ const {
 module.exports = app => {
   app.use(getWebClientMiddleware);
 
-  app.post('/pasteleiro-do-dia', getChannelMembersMiddleware, pasteleiroController.createPasteleiro);
+  app.get('/', applicationController.index);
+  app.get('/authorized', applicationController.auth);
+  app.post('/pasteleiro-do-dia', getTeamAccessToken, getChannelMembersMiddleware, pasteleiroController.createPasteleiro);
 }

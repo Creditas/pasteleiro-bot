@@ -1,7 +1,11 @@
 const { WebClient } = require('@slack/web-api');
 
 module.exports = (req, res, next) => {
-  const web = new WebClient(process.env.SLACK_TOKEN);
+  const { accessToken } = req;
+
+  const web = new WebClient(accessToken);
+
   req.webClient = web;
+
   return next();
 }
