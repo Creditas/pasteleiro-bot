@@ -5,7 +5,7 @@ module.exports = {
     database: "pasteleiro_db_development",
     host: "127.0.0.1",
     dialect: "postgres",
-    operatorsAliases: false
+    operatorsAliases: 0
   },
   test: {
     username: "root",
@@ -13,7 +13,7 @@ module.exports = {
     database: "pasteleiro_db_test",
     host: "127.0.0.1",
     dialect: "postgres",
-    operatorsAliases: false
+    operatorsAliases: 0
   },
   production: {
     username: process.env.DB_USERNAME,
@@ -21,6 +21,6 @@ module.exports = {
     database: process.env.DB_NAME,
     host: process.env.DATABASE_URL,
     dialect: "postgres",
-    operatorsAliases: false
+    operatorsAliases: 0
   }
 }

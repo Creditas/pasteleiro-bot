@@ -10,5 +10,6 @@ module.exports = app => {
   app.use(getWebClientMiddleware);
 
   app.get('/', applicationController.index);
+  app.get('/authorized', applicationController.auth);
   app.post('/pasteleiro-do-dia', getChannelMembersMiddleware, pasteleiroController.createPasteleiro);
 }
