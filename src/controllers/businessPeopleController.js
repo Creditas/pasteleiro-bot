@@ -36,7 +36,24 @@ async function list(req, res) {
   res.json(data);
 }
 
+async function remove(req, res) {
+  const {
+    team_id: teamId,
+    channel_id: channelId,
+    text
+  } = req.body;
+
+  const regex = /([A-Z])\w+/g;
+  const [userId] = regex.exec(text);
+
+  const options = { userId, teamId, channelId };
+  await BusinessPerson.destroy({where: options, options});
+
+  return res.send(`<@${userId}> was revoked to be business person in this group!`);
+}
+
 module.exports = {
   create,
-  list
+  list,
+  remove
 }

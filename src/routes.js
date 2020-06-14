@@ -15,5 +15,6 @@ module.exports = app => {
   app.get('/authorized', applicationController.auth);
   app.post('/grant-business-man', businessPeopleController.create);
   app.post('/list-business-men', businessPeopleController.list);
+  app.post('/revoke-business-man', businessPeopleController.remove);
   app.post('/pasteleiro-do-dia', getTeamAccessToken, getChannelMembersMiddleware, pasteleiroController.create);
 }
