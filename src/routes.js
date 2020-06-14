@@ -1,4 +1,5 @@
 const applicationController = require('./controllers/applicationController');
+const businessPeopleController = require('./controllers/businessPeopleController');
 const pasteleiroController = require('./controllers/pasteleirosController');
 
 const {
@@ -12,5 +13,6 @@ module.exports = app => {
 
   app.get('/', applicationController.index);
   app.get('/authorized', applicationController.auth);
-  app.post('/pasteleiro-do-dia', getTeamAccessToken, getChannelMembersMiddleware, pasteleiroController.createPasteleiro);
+  app.post('/grant-business-man', businessPeopleController.create);
+  app.post('/pasteleiro-do-dia', getTeamAccessToken, getChannelMembersMiddleware, pasteleiroController.create);
 }
