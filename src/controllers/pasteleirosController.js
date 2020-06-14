@@ -1,6 +1,6 @@
 const _ = require('lodash');
 
-async function createPasteleiro(req, res) {
+async function create(req, res) {
   const { members } = req
   const pasteleiro = `<@${_.sample(members)}>`
 
@@ -13,5 +13,5 @@ async function createPasteleiro(req, res) {
 }
 
 module.exports = {
-  createPasteleiro
+  create
 }
