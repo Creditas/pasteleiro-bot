@@ -1,4 +1,7 @@
+const _ = require('lodash');
+
 const { BusinessPerson } = require('../models');
+const { getConversationBusinessPeopleIds } = require('../services/searchService')
 
 async function create(req, res) {
   const { 
@@ -16,6 +19,24 @@ async function create(req, res) {
   return res.send(`<@${userId}> was granted to be business person in this group! :male-office-worker: :female-office-worker:`);
 }
 
+async function list(req, res) {
+  const { 
+    team_id: teamId,
+    channel_id: channelId,
+  } = req.body;
+
+  const businessPeopleIds = await getConversationBusinessPeopleIds({teamId, channelId});
+  const businessPeopleUsers = _.isEmpty(businessPeopleIds) ? 'None' : businessPeopleIds
+    .reduce((accumulator, userId) => accumulator + ` <@${userId}>`, '');
+  
+  const data = {
+    text: `Business People: ${businessPeopleUsers}`
+  }
+
+  res.json(data);
+}
+
 module.exports = {
-  create
+  create,
+  list
 }
